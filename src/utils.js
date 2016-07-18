@@ -10,14 +10,14 @@ export const validateChild = (child) => {
 
 export const protect = (ComponentToWrap) => {
   return class MeticulouslyProtected extends ComponentToWrap {
-    constructor(...args) {
+    constructor (...args) {
       super(...args)
 
       const currentKeys = Object.keys(this.props)
       const allowedKeys = Object.keys(this.constructor.propTypes)
       const forbiddenKeys = _without(currentKeys, ...allowedKeys)
 
-      if(forbiddenKeys.length > 0) {
+      if (forbiddenKeys.length > 0) {
         console.error(
           super.constructor.name, 'does not allow the props ', forbiddenKeys.join(', '),
           ' – supported props:', allowedKeys.join(', ')
