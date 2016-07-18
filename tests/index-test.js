@@ -2,7 +2,7 @@ import expect from 'expect'
 import React from 'react'
 import {render, unmountComponentAtNode} from 'react-dom'
 
-import Component from 'src/'
+import Meticulous, { protect } from 'src/'
 
 describe('Component', () => {
   let node
@@ -15,9 +15,14 @@ describe('Component', () => {
     unmountComponentAtNode(node)
   })
 
-  it('displays a welcome message', () => {
-    render(<Component/>, node, () => {
-      expect(node.innerHTML).toContain('Welcome to React components')
+  it('renders children', () => {
+    const component = (
+      <Meticulous>
+        Hi there!
+      </Meticulous>
+    )
+    render(component, node, () => {
+      expect(node.innerHTML).toContain('Hi there!')
     })
   })
 })
