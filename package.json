@@ -12,13 +12,13 @@
     "umd"
   ],
   "scripts": {
-    "build": "npm run lint && nwb build",
+    "build": "npm run clean && npm run lint && nwb build",
     "clean": "nwb clean",
     "lint": "standard 'src/**/*.js' 'test/**/*.js'",
     "start": "nwb serve --auto-install --fallback --reload",
-    "test": "npm run lint && nwb test",
+    "test": "npm run clean && npm run lint && nwb test",
     "test:watch": "nwb test --server",
-    "prepublish": "npm run build"
+    "prepublish": "npm run test && npm run build"
   },
   "dependencies": {
     "lodash.without": "4.2.0"
