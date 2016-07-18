@@ -12,11 +12,11 @@
     "umd"
   ],
   "scripts": {
-    "build": "nwb build",
+    "build": "npm run lint && nwb build",
     "clean": "nwb clean",
     "lint": "standard 'src/**/*.js' 'test/**/*.js'",
     "start": "nwb serve --auto-install --fallback --reload",
-    "test": "nwb test",
+    "test": "npm run lint && nwb test",
     "test:watch": "nwb test --server",
     "prepublish": "npm run build"
   },
