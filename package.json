@@ -14,9 +14,11 @@
   "scripts": {
     "build": "nwb build",
     "clean": "nwb clean",
+    "lint": "standard 'src/**/*.js' 'test/**/*.js'",
     "start": "nwb serve --auto-install --fallback --reload",
     "test": "nwb test",
-    "test:watch": "nwb test --server"
+    "test:watch": "nwb test --server",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "lodash.without": "4.2.0"
@@ -27,7 +29,8 @@
   "devDependencies": {
     "nwb": "0.10.x",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "standard": "7.1.2"
   },
   "author": "Jonathan Koch (j@koch.io)",
   "homepage": "",
