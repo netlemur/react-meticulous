@@ -2,6 +2,7 @@
   "name": "react-meticulous",
   "version": "0.0.1",
   "description": "meticulous React component",
+  "repository": "git@github.com:netlemur/react-meticulous.git",
   "main": "lib/index.js",
   "jsnext:main": "es6/index.js",
   "files": [
