@@ -1,10 +1,11 @@
-# meticulous
+# react-meticulous
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
-Describe meticulous here.
+react-meticulous makes your React Components more strict. You can only pass properties that are available in your components propTypes.
+
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.svg?style=flat-square
 [build]: https://travis-ci.org/user/repo
@@ -14,3 +15,71 @@ Describe meticulous here.
 
 [coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.svg?style=flat-square
 [coveralls]: https://coveralls.io/github/user/repo
+
+
+## Usage:
+
+```js
+import Meticulous, { protect } from 'react-meticulous'
+
+const DummyComponent = ({ text }) => <div>{ text }</div>
+
+class TestComponent extends Component {
+  render() {
+    const { requiredString, optionalString } = this.props
+    return <div>{requiredString} {optionalString}</div>
+  }
+}
+TestComponent.propTypes = {
+  optionalString: PropTypes.string,
+  requiredString: PropTypes.string.isRequired
+}
+
+const ProtectedComponent = protect(TestComponent)
+const ProtectedStatelessComponent = protect(DummyComponent)
+```
+
+
+### Will log error:
+```js
+render() {
+  return (
+    <Meticulous>
+      {1}
+      <div>div</div>
+      <DummyComponent text="unprotected Stateless Component" />{/* will cause console.error */}
+      <ProtectedComponent requiredString="required string" />
+      <ProtectedComponent requiredString="required string" optionalString="optional string" />
+      <ProtectedComponent requiredString="required string (not allowed)" forbiddenProp="this is not allowed"/>{/* will cause console.error */}
+    </Meticulous>
+  )
+}
+```
+
+### Will not cause error:
+```js
+render() {
+  return (
+    <Meticulous>
+      <ProtectedComponent requiredString="required string" />
+      <ProtectedComponent requiredString="required string" optionalString="optional string" />
+    </Meticulous>
+  )
+}
+```
+
+### Can be used without Meticulous wrapper (to just check for proptypes)
+```js
+render() {
+  return (
+    <div>
+      {1}{/* will _NOT_ cause console.error */}
+      <div>div</div>{/* will _NOT_ cause console.error */}
+      <DummyComponent />{/* will _NOT_ cause console.error */}
+      <ProtectedComponent requiredString="required string" />
+      <ProtectedComponent requiredString="required string" optionalString="optional string" />
+      <ProtectedComponent requiredString="required string (not allowed)" forbiddenProp="this is not allowed"/>{/* will cause console.error */}
+    </div>
+  )
+}
+```
