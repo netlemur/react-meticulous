@@ -11,7 +11,8 @@ react-meticulous makes your React Components more strict. You can only pass prop
 If protect() is used it'll make sure you don't forget to add propTypes to your (new) Components without forcing you to update all your existing Components.
 Other benefits can come from smaller props objects that could speed up your shouldComponentUpdate methods.
 
-TODO: strip checks in production build.
+## TODO: strip checks in production build.
+## TODO: support stateless components
 
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.svg?style=flat-square
