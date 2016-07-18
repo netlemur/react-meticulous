@@ -1,0 +1,39 @@
+{
+  "name": "react-meticulous",
+  "version": "0.0.1",
+  "description": "meticulous React component",
+  "main": "lib/index.js",
+  "jsnext:main": "es6/index.js",
+  "files": [
+    "css",
+    "es6",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build": "nwb build",
+    "clean": "nwb clean",
+    "start": "nwb serve --auto-install --fallback --reload",
+    "test": "nwb test",
+    "test:watch": "nwb test --server"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "15.x"
+  },
+  "devDependencies": {
+    "lodash.without": "4.2.0",
+    "nwb": "0.10.x",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
+  },
+  "author": "Jonathan Koch (j@koch.io)",
+  "homepage": "",
+  "license": "MIT",
+  "keywords": [
+    "react-component"
+  ],
+  "directories": {
+    "test": "tests"
+  }
+}
