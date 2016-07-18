@@ -17,12 +17,13 @@
     "test": "nwb test",
     "test:watch": "nwb test --server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash.without": "4.2.0"
+  },
   "peerDependencies": {
     "react": "15.x"
   },
   "devDependencies": {
-    "lodash.without": "4.2.0",
     "nwb": "0.10.x",
     "react": "^15.2.1",
     "react-dom": "^15.2.1"
